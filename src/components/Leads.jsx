@@ -46,9 +46,9 @@ export default function Leads() {
           <h3 className="text-[15px] font-bold difc-font-display text-difc-blue-deep">Captured Leads</h3>
           <span className="pill bg-difc-blue-soft text-difc-blue">{rows.length} shown</span>
           <div className="ml-auto flex items-center gap-2">
-            <div className="relative">
+            <div className="relative w-full md:w-auto">
               <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-difc-grey-light" />
-              <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search leads…" className="w-56 rounded-xl bg-difc-sand border border-transparent focus:border-difc-blue/20 focus:bg-white outline-none pl-9 pr-3 py-2 text-sm transition" />
+              <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search leads…" className="w-full md:w-56 rounded-xl bg-difc-sand border border-transparent focus:border-difc-blue/20 focus:bg-white outline-none pl-9 pr-3 py-2 text-sm transition" />
             </div>
             {['all', 'High', 'Medium', 'Low'].map((v) => (
               <button key={v} onClick={() => setValFilter(v)} className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${valFilter === v ? 'bg-difc-blue text-white' : 'bg-difc-sand text-difc-grey hover:bg-difc-sand-dark'}`}>{v === 'all' ? 'All' : v}</button>

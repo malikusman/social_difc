@@ -13,9 +13,9 @@ export default function KnowledgeBase() {
   const open = KB_ARTICLES.find((a) => a.id === openId)
 
   return (
-    <div className="h-full flex">
+    <div className="h-full flex flex-col lg:flex-row">
       {/* List */}
-      <div className="w-[420px] shrink-0 border-r border-black/5 flex flex-col bg-difc-sand/50">
+      <div className="w-full lg:w-[420px] shrink-0 border-b border-black/5 lg:border-b-0 lg:border-r flex flex-col bg-difc-sand/50">
         <div className="p-4 border-b border-black/5 bg-white">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-[15px] font-bold difc-font-display text-difc-blue-deep flex items-center gap-2"><BookOpen size={17} /> DIFC Knowledge Base</h3>

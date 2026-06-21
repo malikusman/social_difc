@@ -114,7 +114,7 @@ export default function ConversationView({ conversation: c }) {
   }
 
   return (
-    <div className="h-full flex">
+    <div className="h-full flex flex-col lg:flex-row">
       {/* Conversation column */}
       <div className="flex-1 min-w-0 flex flex-col">
         {/* Header */}
@@ -165,7 +165,7 @@ export default function ConversationView({ conversation: c }) {
       </div>
 
       {/* ── Agent Copilot panel ── */}
-      <div className="w-[400px] shrink-0 border-l border-black/5 bg-difc-sand/50 flex flex-col">
+      <div className="w-full lg:w-[400px] shrink-0 border-t border-black/5 lg:border-t-0 lg:border-l bg-difc-sand/50 flex flex-col">
         <div className="px-4 py-3 border-b border-black/5 bg-white flex items-center gap-2">
           <div className="grid place-items-center h-7 w-7 rounded-lg bg-difc-blue text-white"><Sparkles size={15} /></div>
           <div>

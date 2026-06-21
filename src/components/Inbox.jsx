@@ -83,9 +83,9 @@ export default function Inbox() {
   }
 
   return (
-    <div className="h-full flex">
+    <div className="h-full flex flex-col md:flex-row">
       {/* List column */}
-      <div className="w-[380px] shrink-0 border-r border-black/5 flex flex-col bg-difc-sand">
+      <div className="w-full md:w-[380px] shrink-0 border-b border-black/5 md:border-b-0 md:border-r flex flex-col bg-difc-sand">
         {/* Channel filter strip */}
         <div className="px-4 pt-4 pb-3 border-b border-black/5 bg-white">
           <div className="flex items-center gap-1.5 mb-3 overflow-x-auto pb-1">
