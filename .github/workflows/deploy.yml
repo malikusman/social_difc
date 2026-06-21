@@ -22,7 +22,27 @@ jobs:
       - name: Validate Docker build
         run: docker build --file Dockerfile --tag difc-social:ci .
 
-      - name: Deploy to server
+      - name: Copy app to server
+        uses: appleboy/scp-action@v0.1.5
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_SSH_PORT }}
+          known_hosts: ${{ secrets.SERVER_KNOWN_HOSTS }}
+          source: "."
+          target: "/root/social_difc"
+          rm: true
+          strip_components: false
+          exclude: |
+            .git
+            node_modules
+            dist
+            *.log
+            .github
+            README.md
+
+      - name: Restart remote container
         uses: appleboy/ssh-action@v0.1.9
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -32,15 +52,5 @@ jobs:
           known_hosts: ${{ secrets.SERVER_KNOWN_HOSTS }}
           script: |
             set -e
-            REMOTE_DIR=/root/social_difc
-            mkdir -p "$REMOTE_DIR"
-            cd "$REMOTE_DIR"
-
-            if [ ! -d .git ]; then
-              git clone git@github.com:malikusman/social_difc.git .
-            else
-              git fetch origin main
-              git reset --hard origin/main
-            fi
-
+            cd /root/social_difc
             docker compose up -d --build
