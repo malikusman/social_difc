@@ -1,0 +1,9 @@
+services:
+  difc-social-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: difc-social-enquiry-demo
+    ports:
+      - "8080:80"
+    restart: unless-stopped

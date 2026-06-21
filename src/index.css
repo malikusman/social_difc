@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --difc-blue: #01516C;
+}
+
+* { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: #F5F5F5;
+  color: #1f2a2e;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbars — subtle, premium */
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cdd6da; border-radius: 6px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: #aeb9bd; background-clip: content-box; }
+
+@layer components {
+  .difc-font-display { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+
+  .stat-card {
+    @apply bg-white rounded-2xl p-5 shadow-card border border-black/[0.04] transition-all duration-300;
+  }
+  .stat-card:hover { @apply shadow-card-hover -translate-y-0.5; }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-medium text-white/70 transition-all duration-200 cursor-pointer;
+  }
+  .nav-item:hover { @apply text-white bg-white/10; }
+  .nav-item.active { @apply text-white bg-white/[0.14] shadow-inner; }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 cursor-pointer select-none;
+  }
+  .btn-primary { @apply bg-difc-blue text-white hover:bg-difc-blue-light shadow-sm; }
+  .btn-gold { @apply bg-difc-gold text-white hover:bg-difc-gold-light shadow-sm; }
+  .btn-ghost { @apply bg-difc-sand text-difc-grey hover:bg-difc-sand-dark; }
+  .btn-danger { @apply bg-rose-50 text-rose-600 hover:bg-rose-100; }
+  .btn-outline { @apply border border-difc-blue/20 text-difc-blue hover:bg-difc-blue-soft; }
+
+  .typing-dot { @apply inline-block w-1.5 h-1.5 rounded-full bg-difc-blue-light; }
+}
+
+.typing-dot:nth-child(1){ animation: blink 1s infinite; }
+.typing-dot:nth-child(2){ animation: blink 1s infinite 0.2s; }
+.typing-dot:nth-child(3){ animation: blink 1s infinite 0.4s; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+.bar-fill { transition: width 1s cubic-bezier(0.16,1,0.3,1); }
